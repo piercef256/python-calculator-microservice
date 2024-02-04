@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-calculator-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-calculator
+  template:
+    metadata:
+      labels:
+        app: python-calculator
+    spec:
+      containers:
+      - name: python-calculator
+        image: gcr.io/kubernetes-ci-cd-413317/python-calculator:v1
+        ports:
+        - containerPort: 5000
